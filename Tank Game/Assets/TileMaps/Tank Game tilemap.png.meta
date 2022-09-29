@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -130,8 +130,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42944976ba628cb40bfc55af32b0f612
-      internalID: 253335492
+      spriteID: ba0981bdcdfd7374b88941537064e421
+      internalID: -986279253
       vertices: []
       indices: 
       edges: []
@@ -151,8 +151,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8142636fe3131d46909b82da45aa4b6
-      internalID: 212375129
+      spriteID: a7aa9253577ef864fa1c84ad3056890f
+      internalID: 1947637543
       vertices: []
       indices: 
       edges: []
@@ -172,8 +172,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39ccb6338019d5f4892f8bbb4e55114b
-      internalID: -312985973
+      spriteID: 0cc7a06372b73a847a782bf47bca63f1
+      internalID: 2135227483
       vertices: []
       indices: 
       edges: []
@@ -193,8 +193,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ece844eb34d94047855a76059d2d038
-      internalID: -1930722549
+      spriteID: 2fe95f03b658afd47a8f5effa2efc4b6
+      internalID: -1384705240
       vertices: []
       indices: 
       edges: []
@@ -214,8 +214,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 347bf5ec1ae7fa6479410285d49f925c
-      internalID: 763702152
+      spriteID: 79f59d35e74cdd74cb55826305aff235
+      internalID: 2120284249
       vertices: []
       indices: 
       edges: []
@@ -231,11 +231,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Tank Game tilemap_1: 212375129
-      Tank Game tilemap_0: 253335492
-      Tank Game tilemap_4: 763702152
-      Tank Game tilemap_2: -312985973
-      Tank Game tilemap_3: -1930722549
+      Tank Game tilemap_1: 1947637543
+      Tank Game tilemap_0: -986279253
+      Tank Game tilemap_4: 2120284249
+      Tank Game tilemap_2: 2135227483
+      Tank Game tilemap_3: -1384705240
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
