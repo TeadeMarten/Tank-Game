@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2297142ce55264e46b2b8189312a4c91
+guid: c27caf305d0315343988abbc8c3f19d4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tank Game tilemap_0
+      name: Tank-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,17 +130,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba0981bdcdfd7374b88941537064e421
-      internalID: -986279253
+      spriteID: 477ccb71495704f4a914f799f6952b3f
+      internalID: -864742579
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tank Game tilemap_1
+      name: Tank-Sheet_1
       rect:
         serializedVersion: 2
-        x: 33
+        x: 32
         y: 0
         width: 32
         height: 32
@@ -151,17 +151,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7aa9253577ef864fa1c84ad3056890f
-      internalID: 1947637543
+      spriteID: 3ce20b19f412e8843a1ef18a1bdbdd45
+      internalID: 896160414
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tank Game tilemap_2
+      name: Tank-Sheet_2
       rect:
         serializedVersion: 2
-        x: 66
+        x: 64
         y: 0
         width: 32
         height: 32
@@ -172,17 +172,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0cc7a06372b73a847a782bf47bca63f1
-      internalID: 2135227483
+      spriteID: a6dc0f6c16e297c41b0ac8d385bed2e6
+      internalID: -75957690
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tank Game tilemap_3
+      name: Tank-Sheet_3
       rect:
         serializedVersion: 2
-        x: 99
+        x: 96
         y: 0
         width: 32
         height: 32
@@ -193,17 +193,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2fe95f03b658afd47a8f5effa2efc4b6
-      internalID: -1384705240
+      spriteID: eee695f3086958442b123953c0ce7870
+      internalID: -1913113552
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tank Game tilemap_4
+      name: Tank-Sheet_4
       rect:
         serializedVersion: 2
-        x: 132
+        x: 128
         y: 0
         width: 32
         height: 32
@@ -214,8 +214,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79f59d35e74cdd74cb55826305aff235
-      internalID: 2120284249
+      spriteID: 9e8475daf2bda524ea83c1616bb902b9
+      internalID: 1890850650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tank-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13634b7f1619d9749a9514336c618a89
+      internalID: -1376219705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tank-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7d71cce7f27f1840991c17a7b50a852
+      internalID: -1489121681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tank-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0161defd77e29aa4eafefe63605f43b1
+      internalID: 1385767383
       vertices: []
       indices: 
       edges: []
@@ -231,11 +294,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Tank Game tilemap_1: 1947637543
-      Tank Game tilemap_0: -986279253
-      Tank Game tilemap_4: 2120284249
-      Tank Game tilemap_2: 2135227483
-      Tank Game tilemap_3: -1384705240
+      Tank-Sheet_6: -1489121681
+      Tank-Sheet_2: -75957690
+      Tank-Sheet_5: -1376219705
+      Tank-Sheet_3: -1913113552
+      Tank-Sheet_7: 1385767383
+      Tank-Sheet_4: 1890850650
+      Tank-Sheet_0: -864742579
+      Tank-Sheet_1: 896160414
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
