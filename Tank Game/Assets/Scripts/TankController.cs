@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -14,6 +15,16 @@ public class TankController : MonoBehaviour
 
     [SerializeField]
     GameObject bulletToFire;
+    [SerializeField]
+    GameObject chargedBulletToFire;
+
+    ScoreManager scoreManager;
+    [SerializeField]
+    GameObject score;
+
+    public float chargeTime;
+    private bool isCharging;
+    private bool canShoot;
 
     public float MoveSpeed;
 
@@ -27,11 +38,23 @@ public class TankController : MonoBehaviour
     void Start()
     {
         GetComponent<SpriteRenderer>().material = inactiefMat;
+        scoreManager = score.GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("chargeTime is " + chargeTime);
+
+        if(chargeTime == 2 || chargeTime > 2)
+        {
+            scoreManager.charged.text = ("Charged!");
+        }
+        else
+        {
+            scoreManager.charged.text = ("");
+        }
+
         if (PlayerNumber == 1 && isAanDeBeurt)
         {
             barrelRotator.RotateAround(Vector3.forward, Input.GetAxis("Vertical") * Time.deltaTime);
@@ -41,19 +64,47 @@ public class TankController : MonoBehaviour
             barrelRotator.RotateAround(Vector3.forward, Input.GetAxis("Vertical") * -Time.deltaTime);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isAanDeBeurt)
+        if(Input.GetKey(KeyCode.Space) && chargeTime < 2 && isAanDeBeurt)
+        {
+            isCharging = true;
+            if(isCharging == true)
+            {
+                chargeTime += Time.deltaTime;
+            }
+        }
+        if(Input.GetKeyUp(KeyCode.Space) && chargeTime < 2)
+        {
+            chargeTime = 0;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space) && isAanDeBeurt && chargeTime <=2)
         {
             GameObject b = Instantiate(bulletToFire, firePoint.position, firePoint.rotation);
             if (PlayerNumber == 1) 
             {
                 b.GetComponent<Rigidbody2D>().AddForce(barrelRotator.right * 10, ForceMode2D.Impulse);
             }
+
             if (PlayerNumber == 2)
             {
                 b.GetComponent<Rigidbody2D>().AddForce(barrelRotator.right * -10, ForceMode2D.Impulse);
             }
         }
-        if(PlayerNumber == 1 && isAanDeBeurt)
+        else if (Input.GetKeyUp(KeyCode.Space) && chargeTime >= 2 && isAanDeBeurt)
+        {
+            GameObject cb = Instantiate(chargedBulletToFire, firePoint.position, firePoint.rotation);
+            if(PlayerNumber == 1)
+            {
+                cb.GetComponent<Rigidbody2D>().AddForce(barrelRotator.right * 15, ForceMode2D.Impulse);
+            }
+            if(PlayerNumber == 2)
+            {
+                cb.GetComponent<Rigidbody2D>().AddForce(barrelRotator.right * -15, ForceMode2D.Impulse);
+            }
+            isCharging = false;
+            chargeTime = 0;
+        }
+        if (PlayerNumber == 1 && isAanDeBeurt)
         {
             transform.Translate(Vector2.right * Input.GetAxisRaw("Horizontal") * MoveSpeed * Time.deltaTime);
         }
@@ -62,11 +113,20 @@ public class TankController : MonoBehaviour
             transform.Translate(Vector2.right * Input.GetAxisRaw("Horizontal") * MoveSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isAanDeBeurt)
+        if (Input.GetKeyUp(KeyCode.Space) && isAanDeBeurt)
         {
             Invoke("WisselBeurt", 0.1f);
         }
     }
+
+    void ReleaseCharge()
+    {
+        GameObject cb = Instantiate(chargedBulletToFire, firePoint.position, firePoint.rotation);
+        isCharging = false;
+        chargeTime = 0;
+        canShoot = true;
+    }
+
     void WisselBeurt()
     {
         GameObject.Find("GameManager").GetComponent<turnManager>().WisselBeurt();
@@ -83,6 +143,22 @@ public class TankController : MonoBehaviour
         {
             isAanDeBeurt = false;
             GetComponent<SpriteRenderer>().material.color = Color.white;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            if (PlayerNumber == 1)
+            {
+                scoreManager.player2Score++;
+            }
+            if(PlayerNumber == 2)
+            {
+                scoreManager.player1Score++;
+            }
+                
         }
     }
 }
