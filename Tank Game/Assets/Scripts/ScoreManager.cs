@@ -41,7 +41,6 @@ public class ScoreManager : MonoBehaviour
         {
             Debug.Log("Error, Score may not exceed 10");
         }
-
     }
 
 

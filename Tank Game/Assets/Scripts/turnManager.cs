@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class turnManager : MonoBehaviour
+public class TurnManager : MonoBehaviour
 {
-    private int spelerBeurt = 1;
+    public int spelerBeurt = 1;
     public GameObject speler1;
     public GameObject speler2;
     // Start is called before the first frame update

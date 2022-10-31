@@ -17,7 +17,14 @@ public class TankController : MonoBehaviour
     GameObject bulletToFire;
     [SerializeField]
     GameObject chargedBulletToFire;
-
+    [SerializeField]
+    float slopeCheckDistance;
+    [SerializeField]
+    float groundCheckRadius;
+    [SerializeField]
+    Transform groundCheck;
+    [SerializeField]
+    LayerMask whatIsGround;
     ScoreManager scoreManager;
     [SerializeField]
     GameObject score;
@@ -25,6 +32,8 @@ public class TankController : MonoBehaviour
     public float chargeTime;
     private bool isCharging;
     private bool canShoot;
+    private bool isGrounded;
+    private float slopeDownAngle;
 
     public float MoveSpeed;
 
@@ -34,27 +43,24 @@ public class TankController : MonoBehaviour
     public Material inactiefMat;
     public bool isAanDeBeurt = false;
 
+    private Vector2 colliderSize;
+    private BoxCollider2D collider;
+    private Vector2 slopeNormalPerp;
+
     // Start is called before the first frame update
     void Start()
     {
+        //collider = colliderTransform.GetChild(0).GetComponent<boxcol>();
         GetComponent<SpriteRenderer>().material = inactiefMat;
         scoreManager = score.GetComponent<ScoreManager>();
+        collider = GetComponent<BoxCollider2D>();
+
+        colliderSize = collider.size;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("chargeTime is " + chargeTime);
-
-        if(chargeTime == 2 || chargeTime > 2)
-        {
-            scoreManager.charged.text = ("Charged!");
-        }
-        else
-        {
-            scoreManager.charged.text = ("");
-        }
-
         if (PlayerNumber == 1 && isAanDeBeurt)
         {
             barrelRotator.RotateAround(Vector3.forward, Input.GetAxis("Vertical") * Time.deltaTime);
@@ -118,6 +124,41 @@ public class TankController : MonoBehaviour
             Invoke("WisselBeurt", 0.1f);
         }
     }
+    private void FixedUpdate()
+    {
+        SlopeCheck();
+    }
+
+    void CheckGround()
+    {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+    }
+
+    void SlopeCheck()
+    {
+        Vector2 checkPosition = transform.position - new Vector3(0.0f, colliderSize.y / 2);
+
+        SlopeCheckVertical(checkPosition);
+    }
+
+    void SlopeCheckHorizontal(Vector2 checkPosition)
+    {
+
+    }
+
+    void SlopeCheckVertical(Vector2 checkposition)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(checkposition, Vector2.down, slopeCheckDistance, whatIsGround);
+
+        if (hit)
+        {
+            slopeNormalPerp = Vector2.Perpendicular(hit.normal);
+            slopeDownAngle = Vector2.Angle(hit.normal, Vector2.up);
+
+            Debug.DrawRay(hit.point, slopeNormalPerp, Color.red);
+            Debug.DrawRay(hit.point, hit.normal, Color.green);
+        }
+    }
 
     void ReleaseCharge()
     {
@@ -129,7 +170,7 @@ public class TankController : MonoBehaviour
 
     void WisselBeurt()
     {
-        GameObject.Find("GameManager").GetComponent<turnManager>().WisselBeurt();
+        GameObject.Find("GameManager").GetComponent<TurnManager>().WisselBeurt();
     }
 
     public void ZetActief(bool b)
