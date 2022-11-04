@@ -6,6 +6,8 @@ public class CameraSwitch : MonoBehaviour
 {
     Camera m_MainCamera;
     public Camera m_CameraTwo;
+    [SerializeField]
+    GameObject Mbackround;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,8 @@ public class CameraSwitch : MonoBehaviour
                 m_CameraTwo.enabled = true;
                 //Disable main camera
                 m_MainCamera.enabled = false;
+                //Disable main camera backround
+                Mbackround.SetActive(false);
             }
             else if (!m_MainCamera.enabled)
             {
@@ -36,6 +40,8 @@ public class CameraSwitch : MonoBehaviour
                 m_CameraTwo.enabled = false;
                 //Enable main camera
                 m_MainCamera.enabled = true;
+                //Enable main camera backround
+                Mbackround.SetActive(true);
             }
         }
     }

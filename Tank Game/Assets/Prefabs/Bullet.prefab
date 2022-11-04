@@ -120,7 +120,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 1.2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -140,6 +140,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletTtl: 5
   bulletImpact: {fileID: 6469381304749060975, guid: 39a52a6a2f61ac14883961f5e472b770, type: 3}
+  mainCamera: {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!198 &-4329304576303137874
 ParticleSystem:
   m_ObjectHideFlags: 0

@@ -33,6 +33,9 @@ public class TankController : MonoBehaviour
     private bool isCharging;
     private bool canShoot;
 
+    public bool player1PowerUp = false;
+    public bool player2PowerUp = false;
+
     public float MoveSpeed;
 
     public int PlayerNumber;
@@ -77,12 +80,18 @@ public class TankController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space) && isAanDeBeurt && chargeTime <=2)
         {
             GameObject b = Instantiate(bulletToFire, firePoint.position, firePoint.rotation);
-            if (PlayerNumber == 1) 
+            if (PlayerNumber == 1 && player1PowerUp == false) 
             {
                 b.GetComponent<Rigidbody2D>().AddForce(barrelRotator.right * 10, ForceMode2D.Impulse);
             }
+            if (PlayerNumber == 1 && player1PowerUp == true)
+            {
+                b.GetComponent<Rigidbody2D>().AddForce(barrelRotator.right * 10, ForceMode2D.Impulse);
+                b.GetComponent<Rigidbody2D>().AddForce(barrelRotator.right * 10, ForceMode2D.Impulse);
+                b.GetComponent<Rigidbody2D>().AddForce(barrelRotator.right * 10, ForceMode2D.Impulse);
+            }
 
-            if (PlayerNumber == 2)
+            if (PlayerNumber == 2 && player2PowerUp == false)
             {
                 b.GetComponent<Rigidbody2D>().AddForce(barrelRotator.right * -10, ForceMode2D.Impulse);
             }
@@ -92,11 +101,11 @@ public class TankController : MonoBehaviour
             GameObject cb = Instantiate(chargedBulletToFire, firePoint.position, firePoint.rotation);
             if(PlayerNumber == 1)
             {
-                cb.GetComponent<Rigidbody2D>().AddForce(barrelRotator.right * 15, ForceMode2D.Impulse);
+                cb.GetComponent<Rigidbody2D>().AddForce(barrelRotator.right * 40, ForceMode2D.Impulse);
             }
             if(PlayerNumber == 2)
             {
-                cb.GetComponent<Rigidbody2D>().AddForce(barrelRotator.right * -15, ForceMode2D.Impulse);
+                cb.GetComponent<Rigidbody2D>().AddForce(barrelRotator.right * -40, ForceMode2D.Impulse);
             }
             isCharging = false;
             chargeTime = 0;
