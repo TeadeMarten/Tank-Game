@@ -33,15 +33,19 @@ public class CameraController : MonoBehaviour
 
         print("bulletEnabled is " + bulletEnabled);
 
-
+        //If it's player one's turn then have the camera follow player one
         if (turnManager.spelerBeurt == 1 && bulletEnabled == false)
         {
             transform.position = new Vector3(p1Position.x, p1Position.y, transform.position.z);
         }
+
+        //If it's player two's turn then have the camera follow player two
         if (turnManager.spelerBeurt == 2 && bulletEnabled == false)
         {
             transform.position = new Vector3(p2Position.x, p2Position.y, transform.position.z);
         }
+
+        //If a bullet has been shot then have the camera follow the bullet
         if (bulletEnabled)
         {
             transform.position = new Vector3(bulletPosition.x, bulletPosition.y, transform.position.z);
